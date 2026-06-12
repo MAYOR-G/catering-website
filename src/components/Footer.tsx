@@ -63,7 +63,7 @@ export function Footer() {
         </div>
       </div>
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-olive/12 pt-6 text-xs font-bold text-ink/52 sm:flex-row sm:items-center sm:justify-between">
-        <p>© 2026 Savory Table Catering. Template content is replaceable.</p>
+        <p>© 2026 Savory Table Catering. All rights reserved.</p>
         <p>Service areas: New York, Brooklyn, Chicago, London, Manchester.</p>
       </div>
     </footer>

@@ -130,6 +130,18 @@ export const heroSlides = [
     image:
       "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1300&q=88",
   },
+  {
+    title: "Private chef dinner party",
+    label: "Private dining",
+    image:
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1300&q=88",
+  },
+  {
+    title: "Garden buffet service",
+    label: "Celebration buffet",
+    image:
+      "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1300&q=88",
+  },
 ];
 
 export const services: Service[] = [

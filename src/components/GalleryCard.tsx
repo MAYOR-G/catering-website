@@ -12,7 +12,7 @@ export function GalleryCard({ item, featured = false }: GalleryCardProps) {
     <article
       className={cn(
         "group relative overflow-hidden rounded-[1.45rem] bg-charcoal shadow-card",
-        featured ? "min-h-[520px] lg:col-span-2" : "min-h-[360px]"
+        featured ? "min-h-[420px] sm:min-h-[520px] lg:col-span-2" : "min-h-[300px] sm:min-h-[360px]"
       )}
     >
       <ImageFrame

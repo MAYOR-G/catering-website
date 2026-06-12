@@ -7,34 +7,6 @@ import {
   heroStats,
 } from "../data/siteContent";
 import { ButtonLink } from "./ButtonLink";
-import { ImageFrame } from "./ImageFrame";
-
-const cornerImages = [
-  {
-    src: "https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=600&q=86",
-    alt: "Styled grazing board with seasonal fruit and cheese",
-    label: "Grazing table",
-    className: "left-2 top-8 h-28 w-32 sm:h-36 sm:w-40 lg:left-3 lg:top-10",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?auto=format&fit=crop&w=600&q=86",
-    alt: "Catered vegetables and plated event food",
-    label: "Seasonal menus",
-    className: "right-2 top-3 h-32 w-28 sm:h-40 sm:w-36 lg:right-3 lg:top-8",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=85",
-    alt: "Refined plated entree for a private event",
-    label: "Plated service",
-    className: "bottom-[250px] left-1 h-28 w-32 sm:h-36 sm:w-40 lg:left-3",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=85",
-    alt: "Guests dining at an elegant event table",
-    label: "Event flow",
-    className: "bottom-[260px] right-1 h-28 w-32 sm:h-36 sm:w-40 lg:right-4",
-  },
-];
 
 export function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -58,6 +30,13 @@ export function Hero() {
   };
 
   const activeEvent = heroSlides[activeSlide];
+  const getOffset = (index: number) => {
+    const total = heroSlides.length;
+    const raw = index - activeSlide;
+    if (raw > total / 2) return raw - total;
+    if (raw < -total / 2) return raw + total;
+    return raw;
+  };
 
   return (
     <section
@@ -71,12 +50,12 @@ export function Hero() {
             Premium event catering for modern hosts
           </p>
           <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[0.95] text-charcoal sm:text-6xl xl:text-[5.5rem]">
-            Catering that makes every table feel intentionally hosted.
+            Event food planned around the room, the guests, and the moment.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/76">
-            {brand.name} creates polished catering experiences for weddings,
-            corporate events, private dinners, cocktail receptions, and luxury
-            celebrations across flexible venues.
+            {brand.name} designs catering for weddings, corporate receptions,
+            private dinners, cocktail hours, buffets, and luxury celebrations
+            with thoughtful menus, service flow, and setup details.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="#contact">Plan an event</ButtonLink>
@@ -106,46 +85,43 @@ export function Hero() {
           className="relative animate-rise lg:pl-6"
           style={{ animationDelay: "120ms" }}
         >
-          <div
-            className="relative min-h-[480px]"
-            style={{ minHeight: "480px", height: "min(650px, calc(100svh - 190px))" }}
-          >
-            <div className="absolute bottom-[220px] left-1/2 top-6 w-[66%] -translate-x-1/2 overflow-hidden rounded-[2rem] bg-linen/60 shadow-[0_28px_80px_rgba(32,32,29,0.18)] sm:w-[59%]">
-              {heroSlides.map((slide, index) => (
-                <img
-                  key={slide.title}
-                  src={slide.image}
-                  alt={slide.title}
-                  className={`absolute inset-0 h-full w-full object-cover object-center transition duration-700 ${
-                    index === activeSlide
-                      ? "scale-100 opacity-100"
-                      : "scale-105 opacity-0"
-                  }`}
-                  loading={index === 0 ? "eager" : "lazy"}
-                />
-              ))}
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/28 via-transparent to-white/10" />
+          <div className="relative">
+            <div className="pointer-events-none absolute left-1/2 top-10 h-80 w-80 -translate-x-1/2 rounded-full bg-terracotta/14 blur-3xl" />
+            <div className="relative h-[400px] overflow-visible sm:h-[480px]">
+              {heroSlides.map((slide, index) => {
+                const offset = getOffset(index);
+                const visible = Math.abs(offset) <= 2;
+                const isActive = offset === 0;
+                const x = offset * 34;
+                const rotate = offset * -6;
+                const scale = isActive ? 1 : 0.79 - Math.min(Math.abs(offset), 2) * 0.08;
+                const opacity = visible ? (isActive ? 1 : 0.52 - Math.abs(offset) * 0.08) : 0;
+                const zIndex = 10 - Math.abs(offset);
+
+                return (
+                  <article
+                    key={slide.title}
+                    className="absolute left-1/2 top-0 h-[370px] w-[76%] max-w-[500px] origin-bottom overflow-hidden rounded-[1.8rem] bg-linen shadow-[0_28px_80px_rgba(32,32,29,0.24)] transition-all duration-700 ease-out sm:h-[440px] sm:w-[69%]"
+                    style={{
+                      opacity,
+                      zIndex,
+                      transform: `translateX(calc(-50% + ${x}%)) translateY(${Math.abs(offset) * 22}px) rotate(${rotate}deg) scale(${scale})`,
+                    }}
+                    aria-hidden={!isActive}
+                  >
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className="h-full w-full object-cover"
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/28 via-transparent to-white/6" />
+                  </article>
+                );
+              })}
             </div>
 
-            {cornerImages.map((image, index) => (
-              <div
-                key={image.label}
-                className={`absolute z-10 overflow-hidden rounded-[1.25rem] bg-cream shadow-[0_18px_52px_rgba(32,32,29,0.14)] transition duration-500 hover:-translate-y-1 ${image.className}`}
-                style={{ animationDelay: `${index * 120}ms` }}
-              >
-                <ImageFrame
-                  src={image.src}
-                  alt={image.alt}
-                  className="h-full w-full rounded-[1.25rem] bg-linen"
-                  imageClassName="transition duration-700 hover:scale-105"
-                />
-                <span className="absolute bottom-2 left-2 rounded-full bg-charcoal/80 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-cream">
-                  {image.label}
-                </span>
-              </div>
-            ))}
-
-            <div className="absolute bottom-0 left-0 right-0 z-20 rounded-[1.6rem] border border-olive/12 bg-ivory/95 p-5 text-charcoal shadow-[0_20px_56px_rgba(32,32,29,0.14)] sm:p-6">
+            <div className="relative z-20 mt-5 rounded-[1.6rem] border border-olive/12 bg-ivory/95 p-5 text-charcoal shadow-[0_20px_56px_rgba(32,32,29,0.12)] sm:p-6">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-terracotta">
@@ -155,8 +131,8 @@ export function Hero() {
                     {activeEvent.title}
                   </p>
                   <p className="mt-2 max-w-lg text-[15px] font-semibold leading-6 text-ink/72">
-                    Rotating event concepts show how the template can support
-                    weddings, corporate service, and private hosted dining.
+                    Rotating event concepts show weddings, corporate service,
+                    and private hosted dining with clear planning cues.
                   </p>
                 </div>
 

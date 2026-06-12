@@ -26,3 +26,9 @@ src/data/siteContent.ts
 ```
 
 Update the brand name, phone number, email, package prices, service areas, testimonials, package names, and image URLs there.
+
+## Production Notes
+
+- Replace placeholder event imagery, prices, packages, service areas, and contact details before launch.
+- Connect CTAs to a real event inquiry form, CRM, calendar, or sales workflow.
+- Add venue, staffing, menu download, and event-policy content for production use.

@@ -15,9 +15,9 @@ export function CTA() {
                 Tell us the guest count, date, and atmosphere. We will shape the food around it.
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-cream/72">
-                Use this section as a booking CTA, consultation form prompt, or
-                lead capture block when adapting the template for a real
-                catering brand.
+                Start with a consultation, guest count, venue details, and
+                preferred service style so the catering plan feels calm from
+                the first message.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
