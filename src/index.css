@@ -1,12 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color: #20201d;
-  background: #fff8ed;
+  color: #1a1714;
+  background: #fcfbf9;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,10 +26,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 12% 10%, rgba(214, 154, 114, 0.18), transparent 28%),
-    radial-gradient(circle at 84% 0%, rgba(200, 163, 93, 0.16), transparent 26%),
-    linear-gradient(135deg, #fffdf8 0%, #fff8ed 52%, #f3e8d7 100%);
-  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+    radial-gradient(circle at 12% 10%, rgba(214, 154, 114, 0.08), transparent 28%),
+    radial-gradient(circle at 84% 0%, rgba(200, 163, 93, 0.06), transparent 26%),
+    linear-gradient(135deg, #fcfbf9 0%, #fff8ed 52%, #f8f3eb 100%);
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
 }
 
 body::before {

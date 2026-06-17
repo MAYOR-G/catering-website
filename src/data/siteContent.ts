@@ -1,11 +1,9 @@
 import {
   Award,
-  BriefcaseBusiness,
   CalendarCheck,
   ChefHat,
   ClipboardList,
   Clock3,
-  Flower2,
   GlassWater,
   HeartHandshake,
   Mail,
@@ -20,28 +18,29 @@ import {
   Truck,
   UtensilsCrossed,
   Wine,
+  BriefcaseBusiness,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
-export type NavLink = {
+export type HeroSlide = {
+  title: string;
   label: string;
-  href: string;
+  image: string;
 };
 
 export type Service = {
   title: string;
   description: string;
-  image: string;
-  icon: LucideIcon;
   detail: string;
+  image: string;
+  icon: React.ElementType;
 };
 
 export type Package = {
   name: string;
   price: string;
   eyebrow: string;
-  description: string;
   guestRange: string;
+  description: string;
   features: string[];
   highlighted?: boolean;
 };
@@ -49,13 +48,13 @@ export type Package = {
 export type ProcessStep = {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: React.ElementType;
 };
 
 export type Feature = {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: React.ElementType;
 };
 
 export type GalleryItem = {
@@ -70,27 +69,25 @@ export type Testimonial = {
   name: string;
   title: string;
   initials: string;
-  location: string;
-};
-
-export type ContactHighlight = {
-  label: string;
-  icon: LucideIcon;
+  location?: string;
 };
 
 export const brand = {
-  name: "Savory Table Catering",
-  tagline: "Premium catering, polished planning, and event-ready food service.",
-  phone: "+1 212 555 0148",
-  email: "events@savorytable.co",
-  address: "214 Hudson Street, New York, NY 10013",
-  studioNote:
-    "Consultation studio serving New York, Brooklyn, Chicago, London, and Manchester.",
-  instagram: "@savorytablecatering",
-  hours: "Mon-Fri 9:00 AM-6:00 PM, Sat by appointment",
+  name: "Gild & Gather",
+  shortName: "Gild & Gather",
+  tagline: "Fine catering for momentous occasions.",
+  description:
+    "We orchestrate beautiful, ingredient-driven dining experiences for weddings, corporate events, and private dinners. From the first bite to the final pour, every detail is managed with quiet precision.",
+  email: "events@gildandgather.com",
+  phone: "+1 (555) 283-9110",
+  studioNote: "Tastings by appointment in our Brooklyn kitchen.",
+  address: "124 Culinary Lane, Suite 2",
+  location: "Brooklyn, NY 11201",
+  hours: "Mon-Sat, 9am - 6pm",
+  instagram: "@gildandgather",
 };
 
-export const navLinks: NavLink[] = [
+export const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Packages", href: "#packages" },
   { label: "Process", href: "#process" },
@@ -98,190 +95,171 @@ export const navLinks: NavLink[] = [
   { label: "Contact", href: "#contact" },
 ];
 
-export const heroStats = [
-  { value: "420+", label: "events catered" },
-  { value: "30-500", label: "guest capacity" },
-  { value: "4.9/5", label: "client rating" },
+export const heroSlides: HeroSlide[] = [
+  {
+    title: "Exceptional Culinary Experiences",
+    label: "Luxury Catering",
+    image:
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1600&q=90",
+  },
+  {
+    title: "Impeccable Wedding Receptions",
+    label: "Weddings",
+    image:
+      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1600&q=90",
+  },
+  {
+    title: "Chef-Led Private Dining",
+    label: "Private Events",
+    image:
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=90",
+  },
 ];
 
-export const contactHighlights: ContactHighlight[] = [
-  { label: "Wedding and event catering", icon: Flower2 },
-  { label: "Corporate meal service", icon: BriefcaseBusiness },
-  { label: "Setup, staffing, and cleanup", icon: ShieldCheck },
-  { label: "New York, Chicago, London", icon: MapPin },
-];
-
-export const heroSlides = [
-  {
-    title: "Black-tie plated dinner",
-    label: "Wedding service",
-    image:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1300&q=88",
-  },
-  {
-    title: "Executive lunch reception",
-    label: "Corporate events",
-    image:
-      "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1300&q=88",
-  },
-  {
-    title: "Cocktail hour grazing table",
-    label: "Social celebrations",
-    image:
-      "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1300&q=88",
-  },
-  {
-    title: "Private chef dinner party",
-    label: "Private dining",
-    image:
-      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1300&q=88",
-  },
-  {
-    title: "Garden buffet service",
-    label: "Celebration buffet",
-    image:
-      "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1300&q=88",
-  },
+export const contactHighlights = [
+  { label: "Bespoke Menus", icon: UtensilsCrossed },
+  { label: "Impeccable Service", icon: Award },
+  { label: "Curated Experiences", icon: GlassWater },
 ];
 
 export const services: Service[] = [
   {
     title: "Wedding Catering",
     description:
-      "Polished plated dinners, family-style feasts, late-night bites, and elegant service for ceremonies and receptions.",
-    detail: "Menus, rentals, service flow",
+      "From elegant cocktail hours to multi-course plated dinners, we design menus that reflect your story and serve your guests flawlessly.",
+    detail: "Full-service wedding dining",
     image:
-      "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=86",
+      "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=90",
     icon: HeartHandshake,
   },
   {
     title: "Corporate Events",
     description:
-      "Breakfast briefings, boardroom lunches, launch parties, and team celebrations with professional timing.",
+      "Elevated boardroom lunches, launch parties, and gala dinners delivered with professional timing and discreet service.",
     detail: "Office delivery or hosted service",
     image:
-      "https://images.unsplash.com/photo-1519671282429-b44660ead0a7?auto=format&fit=crop&w=900&q=86",
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=90",
     icon: BriefcaseBusiness,
   },
   {
     title: "Private Dinners",
     description:
-      "Chef-led dinner party experiences with composed courses, wine-friendly pairings, and quiet service.",
-    detail: "Intimate homes and private venues",
+      "Chef-led dinner party experiences with composed courses, bespoke wine pairings, and quiet, attentive service in your home.",
+    detail: "Intimate homes and venues",
     image:
-      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=86",
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=90",
     icon: ChefHat,
   },
   {
-    title: "Birthday Parties",
+    title: "Celebration Gatherings",
     description:
-      "Premium celebration menus for milestone birthdays, garden parties, rooftop dinners, and hosted lunches.",
-    detail: "Buffet, passed bites, dessert tables",
+      "Premium celebration menus for milestone birthdays, garden parties, and rehearsal dinners requiring a touch of elegance.",
+    detail: "Buffet, passed bites, stations",
     image:
-      "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=86",
+      "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=90",
     icon: PartyPopper,
   },
   {
-    title: "Buffet Setup",
+    title: "Artisan Buffets",
     description:
-      "Styled buffet stations with warmers, servingware, signage, dietary markers, and a clean guest flow.",
-    detail: "Drop-off or staffed presentation",
+      "Beautifully styled buffet stations with premium warmers, bespoke servingware, clear dietary markers, and elegant guest flow.",
+    detail: "Staffed presentation",
     image:
-      "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=900&q=86",
+      "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=900&q=90",
     icon: Salad,
   },
   {
     title: "Cocktail Receptions",
     description:
-      "Passed canapes, grazing tables, champagne-friendly small plates, and bar-adjacent service planning.",
-    detail: "Canapes, boards, mini desserts",
+      "Exquisite passed canapés, elaborate grazing tables, and sommelier-selected pairings for standing receptions.",
+    detail: "Canapés and grazing boards",
     image:
-      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=86",
+      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=90",
     icon: GlassWater,
   },
 ];
 
 export const packages: Package[] = [
   {
-    name: "Gathering Table",
-    price: "$1,200",
+    name: "The Intimate Table",
+    price: "$1,800",
     eyebrow: "Small events",
     guestRange: "20-45 guests",
     description:
-      "A refined starter package for intimate celebrations, office lunches, and private dinners.",
+      "A refined starter package for intimate celebrations, executive lunches, and exclusive private dinners.",
     features: [
       "Seasonal starter and main selection",
-      "Styled buffet or family-style service",
+      "Styled family-style or buffet service",
       "Dietary preference coordination",
-      "Delivery and basic setup included",
+      "Delivery, setup, and service staff",
     ],
   },
   {
-    name: "Signature Reception",
-    price: "$2,500",
+    name: "The Signature Reception",
+    price: "$3,500",
     eyebrow: "Most requested",
     guestRange: "45-110 guests",
     description:
-      "A full event package for weddings, milestone parties, and corporate receptions needing polish.",
+      "A complete event package for weddings, milestone parties, and corporate receptions requiring high-end polish.",
     features: [
-      "Canapes plus two-course menu",
-      "Event captain and service team",
-      "Menu tasting credit after booking",
-      "Setup timeline and venue coordination",
+      "Passed canapés plus two-course menu",
+      "Dedicated event captain and service team",
+      "Complimentary menu tasting session",
+      "Venue coordination and timeline planning",
     ],
     highlighted: true,
   },
   {
-    name: "Grand Celebration",
-    price: "$4,800",
+    name: "The Grand Gala",
+    price: "$7,200",
     eyebrow: "Premium service",
     guestRange: "110-250 guests",
     description:
-      "A high-touch catering experience for large weddings, brand events, and formal celebrations.",
+      "A highly bespoke catering experience for large luxury weddings, brand events, and formal galas.",
     features: [
-      "Custom multi-course menu planning",
-      "Passed bites, buffet, or plated service",
-      "Staffing, rentals guidance, and cleanup",
-      "Senior producer for event-day flow",
+      "Custom multi-course menu design",
+      "Plated dining or premium station service",
+      "Sommelier consultation and rentals guidance",
+      "Senior event producer for seamless flow",
     ],
   },
 ];
 
 export const processSteps: ProcessStep[] = [
   {
-    title: "Inquiry",
+    title: "Inquiry & Vision",
     description:
-      "Share your date, location, guest count, service style, and any dietary requirements.",
+      "Share your event date, location, guest count, and the atmosphere you wish to create for your guests.",
     icon: Send,
   },
   {
     title: "Consultation",
     description:
-      "We clarify the event flow, venue details, budget range, and catering priorities.",
+      "We discuss venue logistics, menu preferences, service style, and the finer details of your event flow.",
     icon: CalendarCheck,
   },
   {
-    title: "Menu planning",
+    title: "Menu Design",
     description:
-      "A tailored menu proposal is prepared with service notes, timing, and transparent pricing.",
+      "Our chefs draft a tailored menu proposal, complete with service notes, timing, and transparent pricing.",
     icon: ClipboardList,
   },
   {
-    title: "Confirmation",
+    title: "Tasting & Confirmation",
     description:
-      "Approve the quote, guest count, deposit schedule, staffing plan, and final menu.",
+      "Experience your menu firsthand. We refine the selections, finalize the deposit, and lock in the team.",
     icon: ShieldCheck,
   },
   {
-    title: "Delivery and setup",
+    title: "Event Preparation",
     description:
-      "Our team coordinates arrival, presentation, warmers, stations, signage, and service prep.",
+      "Our team coordinates all rentals, delivery windows, and kitchen prep to ensure a flawless setup.",
     icon: Truck,
   },
   {
-    title: "Event service",
+    title: "Flawless Execution",
     description:
-      "Food service, replenishment, guest support, and cleanup are handled with calm precision.",
+      "From the first passed hors d'oeuvre to the final sweep of the venue, our service is calm and precise.",
     icon: UtensilsCrossed,
   },
 ];
@@ -294,7 +272,7 @@ export const features: Feature[] = [
     icon: CalendarCheck,
   },
   {
-    title: "Premium presentation",
+    title: "Exquisite presentation",
     description:
       "Every station, platter, and passed bite is composed to feel intentional in photos and effortless in person.",
     icon: Sparkles,
@@ -318,35 +296,35 @@ export const galleryItems: GalleryItem[] = [
     title: "Garden wedding supper",
     occasion: "Weddings",
     image:
-      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=88",
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=90",
     notes: "Plated dinner, champagne hour, and late-night dessert table.",
   },
   {
     title: "Boardroom lunch spread",
     occasion: "Corporate",
     image:
-      "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=88",
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=90",
     notes: "Warm mains, salad boards, boxed desserts, and discreet setup.",
   },
   {
     title: "Private chef evening",
     occasion: "Private dining",
     image:
-      "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=88",
+      "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=1200&q=90",
     notes: "Four-course menu with chef plating and table-side service.",
   },
   {
     title: "Cocktail canape service",
     occasion: "Receptions",
     image:
-      "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1200&q=88",
+      "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=90",
     notes: "Passed bites, grazing table, and bar-friendly small plates.",
   },
   {
     title: "Milestone birthday buffet",
     occasion: "Celebrations",
     image:
-      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=88",
+      "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1200&q=90",
     notes: "Styled buffet with warm service and a sweets station.",
   },
 ];
@@ -354,15 +332,15 @@ export const galleryItems: GalleryItem[] = [
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "The menu felt bespoke without making the planning process complicated. Guests kept asking who catered the reception.",
+      "The menu felt entirely bespoke without making the planning process complicated. Guests kept asking who catered the reception—it was that exceptional.",
     name: "Amelia Hart",
-    title: "Wedding client",
+    title: "Wedding Client",
     initials: "AH",
     location: "Brooklyn, NY",
   },
   {
     quote:
-      "Their team handled our investor lunch with the kind of timing and presentation you usually only see at private venues.",
+      "Their team handled our investor lunch with the kind of impeccable timing and presentation you usually only see at private members' clubs.",
     name: "Marcus Lee",
     title: "Operations Director",
     initials: "ML",
@@ -370,19 +348,19 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "The tasting, proposal, setup, and service were calm from start to finish. It made hosting at home feel genuinely luxurious.",
+      "The tasting, proposal, setup, and service were completely calm from start to finish. It made hosting a dinner party at home feel genuinely luxurious.",
     name: "Priya Shah",
-    title: "Private dinner host",
+    title: "Private Dinner Host",
     initials: "PS",
     location: "London, UK",
   },
 ];
 
 export const footerLinks = [
-  { label: "Wedding catering", href: "#services" },
-  { label: "Corporate events", href: "#services" },
-  { label: "Packages", href: "#packages" },
-  { label: "Event gallery", href: "#gallery" },
+  { label: "Wedding Catering", href: "#services" },
+  { label: "Corporate Events", href: "#services" },
+  { label: "Curated Packages", href: "#packages" },
+  { label: "Event Portfolio", href: "#gallery" },
 ];
 
 export const socialLinks = [
@@ -397,4 +375,28 @@ export const contactCards = [
   { label: brand.studioNote, icon: MapPin },
   { label: "Typical quote turnaround: 1-2 business days", icon: Clock3 },
   { label: "Tastings available for confirmed full-service events", icon: Star },
+];
+
+export type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+export const faqs: FAQItem[] = [
+  {
+    question: "Do you accommodate dietary restrictions and allergies?",
+    answer: "Yes, absolutely. We design menus to accommodate all dietary requirements, including vegan, gluten-free, dairy-free, and severe allergies. We ensure these meals are prepared safely and served seamlessly.",
+  },
+  {
+    question: "How far in advance should we book our event?",
+    answer: "For weddings and large corporate events, we recommend booking 6 to 12 months in advance. For private dinners and smaller gatherings, 4 to 8 weeks is typically sufficient, though dates do fill up quickly during peak seasons.",
+  },
+  {
+    question: "Do you provide staff, rentals, and bar service?",
+    answer: "Yes. Our full-service packages include professional event captains, servers, and chefs. We can also coordinate rentals (tables, linens, glassware) and provide TIPS-certified bartenders to manage your beverage program.",
+  },
+  {
+    question: "Do you offer menu tastings?",
+    answer: "We offer complimentary tasting sessions for clients who have booked a full-service wedding or large-scale event with us. For other events, tastings can be arranged for a fee, which is credited toward your final invoice if you book.",
+  },
 ];

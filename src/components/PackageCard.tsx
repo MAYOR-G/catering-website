@@ -11,68 +11,74 @@ export function PackageCard({ item }: PackageCardProps) {
   return (
     <article
       className={cn(
-        "relative flex h-full flex-col rounded-[1.45rem] border p-6 shadow-card transition duration-300 hover:-translate-y-1",
+        "relative flex h-full flex-col p-10 transition duration-500 hover:-translate-y-2 border",
         item.highlighted
-          ? "border-gold/55 bg-charcoal text-cream shadow-lift"
-          : "border-olive/12 bg-white/76 text-charcoal"
+          ? "bg-charcoal text-cream border-gold/40 shadow-2xl shadow-gold/10"
+          : "bg-ivory text-charcoal border-olive/20 shadow-xl shadow-charcoal/5"
       )}
     >
-      {item.highlighted ? (
-        <span className="absolute right-5 top-5 inline-flex items-center gap-1 rounded-full bg-gold px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em] text-charcoal">
+      {item.highlighted && (
+        <span className="absolute -top-4 left-10 inline-flex items-center gap-1.5 bg-gold px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-charcoal">
           <Star className="h-3.5 w-3.5 fill-charcoal" aria-hidden="true" />
-          Recommended
+          Chef's Recommendation
         </span>
-      ) : null}
+      )}
       <p
         className={cn(
-          "text-xs font-black uppercase tracking-[0.2em]",
-          item.highlighted ? "text-gold" : "text-terracotta"
+          "text-[11px] font-bold uppercase tracking-[0.2em]",
+          item.highlighted ? "text-gold" : "text-olive"
         )}
       >
         {item.eyebrow}
       </p>
-      <h3 className="mt-4 font-display text-3xl font-semibold">
+      <h3 className="mt-4 font-display text-4xl font-medium">
         {item.name}
       </h3>
       <p
         className={cn(
-          "mt-3 text-[15px] leading-7",
-          item.highlighted ? "text-cream/72" : "text-ink/70"
+          "mt-4 text-base leading-relaxed",
+          item.highlighted ? "text-cream/80" : "text-ink/80"
         )}
       >
         {item.description}
       </p>
-      <div className="mt-6 flex items-end justify-between gap-4 border-t border-current/12 pt-5">
+      
+      <div className="mt-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-t border-current/20 pt-8">
         <div>
-          <p className="text-sm font-bold opacity-70">Starting at</p>
-          <p className="font-display text-4xl font-semibold">{item.price}</p>
+          <p className="text-sm font-semibold opacity-70 uppercase tracking-widest">Starting at</p>
+          <p className="font-display text-5xl font-medium mt-1">{item.price}</p>
         </div>
-        <p className="rounded-full bg-current/8 px-3 py-1 text-sm font-extrabold">
+        <p className="bg-current/5 px-4 py-2 text-sm font-semibold tracking-wider uppercase border border-current/10">
           {item.guestRange}
         </p>
       </div>
-      <ul className="mt-6 flex-1 space-y-3">
+
+      <ul className="mt-8 flex-1 space-y-4">
         {item.features.map((feature) => (
-          <li key={feature} className="flex gap-3 text-[15px] leading-6">
+          <li key={feature} className="flex gap-4 text-base leading-relaxed">
             <Check
               className={cn(
-                "mt-0.5 h-5 w-5 shrink-0",
+                "mt-1 h-5 w-5 shrink-0",
                 item.highlighted ? "text-gold" : "text-olive"
               )}
               aria-hidden="true"
             />
-            <span className={item.highlighted ? "text-cream/78" : "text-ink/72"}>
+            <span className={item.highlighted ? "text-cream/90" : "text-ink/90"}>
               {feature}
             </span>
           </li>
         ))}
       </ul>
+
       <ButtonLink
         href="#contact"
         variant={item.highlighted ? "gold" : "secondary"}
-        className="mt-7 w-full"
+        className={cn(
+          "mt-10 w-full text-center py-4",
+          item.highlighted ? "bg-gold text-charcoal hover:bg-gold/90" : "border-olive text-charcoal hover:bg-olive hover:text-white"
+        )}
       >
-        Request this package
+        Request This Package
       </ButtonLink>
     </article>
   );

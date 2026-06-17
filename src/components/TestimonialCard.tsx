@@ -7,23 +7,23 @@ type TestimonialCardProps = {
 
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
   return (
-    <article className="rounded-[1.35rem] border border-olive/12 bg-white/72 p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:bg-white">
-      <Quote className="h-8 w-8 text-terracotta" aria-hidden="true" />
-      <p className="mt-5 text-[17px] font-semibold leading-8 text-charcoal">
+    <article className="relative flex flex-col justify-between p-8 sm:p-12 border border-olive/10 bg-ivory shadow-lg shadow-charcoal/5 transition duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-charcoal/10">
+      <Quote className="absolute top-10 right-10 h-16 w-16 text-gold/10 rotate-180" aria-hidden="true" />
+      <p className="relative z-10 text-lg sm:text-xl font-display font-medium leading-relaxed text-charcoal italic">
         "{testimonial.quote}"
       </p>
-      <div className="mt-7 flex items-center gap-3">
-        <span className="grid h-12 w-12 place-items-center rounded-full bg-olive text-sm font-black text-cream">
+      <div className="mt-10 flex items-center gap-4">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-olive/10 text-sm font-bold tracking-widest text-olive uppercase">
           {testimonial.initials}
         </span>
-        <span>
-          <span className="block font-extrabold text-charcoal">
+        <div>
+          <span className="block font-semibold text-charcoal uppercase tracking-wider text-sm">
             {testimonial.name}
           </span>
-          <span className="block text-sm font-semibold text-ink/62">
-            {testimonial.title} - {testimonial.location}
+          <span className="block text-sm text-ink/70 mt-1">
+            {testimonial.title} &mdash; {testimonial.location}
           </span>
-        </span>
+        </div>
       </div>
     </article>
   );

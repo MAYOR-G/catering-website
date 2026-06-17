@@ -6,6 +6,7 @@ type SectionHeaderProps = {
   description?: string;
   align?: "left" | "center";
   className?: string;
+  dark?: boolean;
 };
 
 export function SectionHeader({
@@ -14,22 +15,39 @@ export function SectionHeader({
   description,
   align = "left",
   className,
+  dark = false,
 }: SectionHeaderProps) {
   return (
     <div
       className={cn(
-        align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl",
+        align === "center" ? "mx-auto max-w-4xl text-center" : "max-w-3xl",
         className
       )}
     >
-      <p className="mb-4 text-xs font-extrabold uppercase tracking-[0.22em] text-terracotta">
+      <p
+        className={cn(
+          "mb-6 text-xs font-bold uppercase tracking-[0.25em]",
+          dark ? "text-gold" : "text-olive"
+        )}
+      >
         {eyebrow}
       </p>
-      <h2 className="font-display text-4xl font-semibold leading-[1.02] text-charcoal sm:text-5xl lg:text-[3.4rem]">
+      <h2
+        className={cn(
+          "font-display text-5xl font-medium leading-[1.1] sm:text-6xl",
+          dark ? "text-ivory" : "text-charcoal"
+        )}
+      >
         {title}
       </h2>
       {description ? (
-        <p className="mt-5 text-base leading-8 text-ink/70 sm:text-lg">
+        <p
+          className={cn(
+            "mt-6 text-lg leading-relaxed sm:text-xl",
+            align === "center" && "mx-auto max-w-2xl",
+            dark ? "text-cream/80" : "text-ink/80"
+          )}
+        >
           {description}
         </p>
       ) : null}
